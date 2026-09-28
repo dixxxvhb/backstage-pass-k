@@ -86,8 +86,8 @@ p.lede{color:#cfcdc8;max-width:34em}
 .row .note{font-size:13px;color:var(--mute)}
 .bars{display:grid;grid-template-columns:52px 1fr 56px;gap:8px 10px;align-items:center;font-size:13px}
 .bars .nm{font-family:var(--mono);font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
-.bars .tr{height:12px;background:#1b1b1e}
-.bars .fl{height:100%;width:0;background:var(--ink);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars .tr{display:block;height:12px;background:#1b1b1e}
+.bars .fl{display:block;height:100%;width:0;background:var(--ink);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
 .bars .fl.k{background:#6d6d74}
 .bars .num{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
 .row.hot .fl{background:var(--tape)}
@@ -104,6 +104,12 @@ p.lede{color:#cfcdc8;max-width:34em}
 .yr span{font-family:var(--mono);font-size:12px;color:var(--mute)}
 
 /* ---------- receipts ---------- */
+.dict{background:var(--bg2);padding:18px;margin-top:12px}
+.dict .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.dw{display:grid;grid-template-columns:1fr auto;align-items:baseline;border-bottom:1px solid var(--line);padding:9px 0}
+.dw span{font-family:var(--serif);font-style:italic;font-size:26px}
+.dw em{font-style:normal;font-weight:700;font-size:26px;text-align:right;font-variant-numeric:tabular-nums}
+.dw small{grid-column:1/-1;font-size:12px;color:var(--mute)}
 .receipt{border-left:3px solid var(--tape);padding:4px 0 4px 20px;margin:34px 0}
 .receipt q{display:block;font-family:var(--serif);font-size:clamp(24px,5.6vw,34px);line-height:1.2;quotes:none}
 .receipt .by{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:10px;letter-spacing:.05em}
@@ -157,7 +163,7 @@ body.touring{scroll-behavior:auto}
     <div class="kick">All access / backstage</div>
     <h1>Dear <em>Kaley</em></h1>
     <p>Dixon asked me to read every text you two have ever sent. I did. This is what I found. Sound on.</p>
-    <button class="btn primary" id="startTour">Play it (about 3 minutes)</button>
+    <button class="btn primary" id="startTour">Play it (about 4 minutes)</button>
     <button class="btn ghost" id="skipIntro">Just let me scroll</button>
     <div class="meta"><div>Entry<span>#001</span></div><div>Category<span>Duet, open</span></div><div>Style<span>Mean and caring</span></div><div>Studio<span>Independent</span></div></div>
   </div>
@@ -235,6 +241,14 @@ body.touring{scroll-behavior:auto}
     <div class="card"><div class="lab">He hearted your texts</div><div class="v">440</div><div class="s">times. You hearted his 171.</div></div>
     <div class="card"><div class="lab">You ha-ha'd his</div><div class="v">466</div><div class="s">times. He's funny. Noted.</div></div>
   </div>
+  <div class="dict" id="c-dict">
+    <div class="lab">Your dictionary</div>
+    <div class="dw"><span>slay</span><em>19</em><small>him: 2, ever</small></div>
+    <div class="dw"><span>donesies</span><em>5</em><small>him: 0</small></div>
+    <div class="dw"><span>womp womp</span><em>8</em><small>him: 0</small></div>
+    <div class="lab" style="margin-top:18px">His</div>
+    <div class="dw"><span>woof</span><em>10</em><small>you: never</small></div>
+  </div>
 </div></section>
 
 <section id="s-streak"><div class="wrap">
@@ -281,6 +295,10 @@ body.touring{scroll-behavior:auto}
     <img src="img/claws.jpg" alt="Kaley and Dixon backstage, June 2025">
     <img src="img/stage.jpg" alt="The number onstage" style="align-self:end">
   </div>
+  <div class="receipt" id="q-dance">
+    <q>You sticking this out is incredible. Makes me wanna dance again. So we can dance together</q>
+    <div class="by">DIXON · MAY 27, 2025</div>
+  </div>
 </div></section>
 
 <section id="s-evidence"><div class="wrap">
@@ -300,6 +318,16 @@ body.touring{scroll-behavior:auto}
   <p class="small" style="margin-top:14px">He screenshotted you asleep on FaceTime at least twice. That's in his camera roll. Forever.</p>
 </div></section>
 
+<section id="s-nov"><div class="wrap">
+  <div class="cue"><b>Cue 9</b> November 18, 2025</div>
+  <h2>You asked what you'd even done. <em>He sent a list.</em></h2>
+  <div class="receipt" id="q-nov">
+    <q>You're the most incredible caring friend ive ever had. You hold a steady job and take care of your apartment and dog. You take care of an awesome boyfriend. You are always thinking about others as well as trying to better yourself.</q>
+    <div class="by">DIXON · 7:49 PM</div>
+    <div class="reply" style="font-size:clamp(30px,8vw,48px)">"I can go on"</div>
+  </div>
+</div></section>
+
 <section id="s-march"><div class="wrap">
   <div class="cue">March 11, 2026</div>
   <div class="receipt" id="q-march">
@@ -310,7 +338,7 @@ body.touring{scroll-behavior:auto}
 </div></section>
 
 <section id="s-today"><div class="wrap">
-  <div class="cue"><b>Cue 9</b> Today, 5:07 pm</div>
+  <div class="cue"><b>Cue 10</b> Today, 5:07 pm</div>
   <h2>He had a hard one. You said:</h2>
   <div class="receipt" id="q-today">
     <q>And if we can't get out of it, let's just get into it!!!!</q>
@@ -319,7 +347,7 @@ body.touring{scroll-behavior:auto}
 </div></section>
 
 <section id="s-move"><div class="wrap">
-  <div class="cue"><b>Cue 10</b> Wednesday</div>
+  <div class="cue"><b>Cue 11</b> Wednesday</div>
   <h2>A quick drive <em>apart.</em></h2>
   <div class="thread" id="t-move">
     <div class="b k">I'm literally so excited we're going to be a quick drive to each other</div>
@@ -334,7 +362,7 @@ body.touring{scroll-behavior:auto}
 </div></section>
 
 <section id="s-race"><div class="wrap">
-  <div class="cue"><b>Cue 11</b> Next event</div>
+  <div class="cue"><b>Cue 12</b> Next event</div>
   <h2>"Okay how do we submit for <em>Amazing Race"</em></h2>
   <p class="lede">You asked that at 5:25 tonight. Here's how, and here's your application. I already did the hard part.</p>
   <div class="app" id="app">
@@ -423,7 +451,7 @@ body.touring{scroll-behavior:auto}
   });
 
   /* ---------- guided tour ---------- */
-  const DUR = {"b01": 9.98, "b02": 10.15, "b03": 13.71, "b04": 16.75, "b05": 13.01, "b06": 15.21, "b07": 10.43, "b08": 9.09, "b09": 17.29, "b10": 8.67, "b11": 8.12, "b12": 13.77, "b13": 12.35, "b14": 9.78, "b15": 10.43, "b16": 15.5, "b17": 17.34};
+  const DUR = {"b01": 9.98, "b02": 10.15, "b03": 13.71, "b04": 16.75, "b05": 13.01, "b06": 15.21, "b07": 10.43, "b08": 9.09, "b09": 17.29, "b10": 8.67, "b11": 8.12, "b12": 13.77, "b13": 12.35, "b14": 9.78, "b15": 10.43, "b16": 15.5, "b17": 17.34, "b08b": 12.49, "b13b": 9.76, "b13c": 12.43};
   const see = (sel, block='center') => { const el = typeof sel === 'string' ? $(sel) : sel; if (el) el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block}); };
   const spot = sel => { $$('.spot').forEach(e => e.classList.remove('spot')); if (sel) { const el = $(sel); if (el) el.classList.add('spot'); } };
   const top = sel => see(sel, 'start');
@@ -437,11 +465,14 @@ body.touring{scroll-behavior:auto}
     {id:'b06', cap:"Now the creepy part. Dixon has said \"literally\" 241 times. You've said it 240. One apart. The word wine? 41 to 40. One apart again. Nobody planned this. I checked twice.", go(){ see('#r-lit'); spot('#r-lit'); }, at:[[8.3, () => { see('#r-wine'); spot('#r-wine'); }]]},
     {id:'b07', cap:"You've sent three question marks 226 times. You say sorry twice as often as he does. He says fuck almost twice as often as you. Balance.", go(){ see('#r-q'); spot('#r-q'); }, at:[[3.8, () => { see('#r-sorry'); spot('#r-sorry'); }], [6.4, () => { see('#r-fuck'); spot('#r-fuck'); }]]},
     {id:'b08', cap:"When you text him, he usually answers in 20 seconds. You usually take 29. I'm not saying anything. I'm just saying the number.", go(){ see('#c-speed'); spot('#c-speed'); }},
+    {id:'b08b', cap:"You also have a dictionary. You say slay. He has said it twice, ever. You say donesies, womp womp, and wahoo. He says woof. Ten woofs. You have never once woofed.", go(){ see('#c-dict'); spot('#c-dict'); }},
     {id:'b09', cap:"From December 4 to February 22, you texted every single day. 81 days straight. At 2 a.m. on New Year's, he declared that in 2025 you would solidify your soulmateness and dominate the world. You said, \"Sounds like a plan to me.\"", go(){ spot(null); top('#s-streak'); }, at:[[2, () => { see('#heat'); playHeat(); }], [8.5, () => { see('#q-ny'); spot('#q-ny'); }]]},
     {id:'b10', cap:"December 6, 2024. You wrote, \"Kinda cool we chose each other as besties.\" He wrote back one word. Forever.", go(){ see('#q-besties'); spot('#q-besties'); }},
     {id:'b11', cap:"Mikey once said you two are a dangerous duo, because you're mean and caring at the same time. It's the best review I've ever read.", go(){ see('#q-mikey'); spot('#q-mikey'); }},
     {id:'b12', cap:"Your birthday, 2025. You said you'd never had a good one. So he paid for part of a tattoo, on St. Patrick's Day. Your review that night: \"Okay honestly i am stunning though.\" Correct.", go(){ see('#q-bday'); spot('#q-bday'); }},
-    {id:'b13', cap:"June 6. You were back on a stage for the first time in years, because he asked you to be. Your big question that morning: \"Should i be in full glam at tech run.\" Yes. The answer is always yes.", go(){ spot(null); top('#s-stage'); }, at:[[6, () => see('#s-stage .feature')], [9.5, () => { top('#s-evidence'); }]]},
+    {id:'b13', cap:"June 6. You were back on a stage for the first time in years, because he asked you to be. Your big question that morning: \"Should i be in full glam at tech run.\" Yes. The answer is always yes.", go(){ spot(null); top('#s-stage'); }, at:[[6, () => see('#s-stage .feature')]]},
+    {id:'b13b', cap:"A week and a half before that show, he told you: \"You sticking this out is incredible. Makes me wanna dance again. So we can dance together.\" And then you did.", go(){ see('#q-dance'); spot('#q-dance'); }, at:[[8.6, () => { spot(null); top('#s-evidence'); }]]},
+    {id:'b13c', pre(){}, cap:"November 18. You asked what you'd even done. He sent you a list. \"You're the most incredible caring friend I've ever had.\" Then he said, \"I can go on.\" He can. I read all of it.", go(){ spot(null); top('#s-nov'); }, at:[[4, () => { see('#q-nov'); spot('#q-nov'); }]]},
     {id:'b14', cap:"And March 11. That morning you wrote, \"Her energy and life force will always be with you. Any time you want to tap into it, she'll be right there.\" He kept that.", go(){ spot(null); see('#q-march'); }},
     {id:'b15', cap:"Which brings us to today. He had a hard one. You told him, \"If we can't get out of it, let's just get into it!!!!\" Four exclamation points. Of course.", go(){ see('#q-today'); spot('#q-today'); }},
     {id:'b16', cap:"Wednesday he moves, and you'll be a quick drive apart. His words: \"down the street. Life changing.\" You're coming early. It'll be like Fly, but unpaid. First movie: Stop That Train, with a bottle of wine, on the TV from your closet.", go(){ spot(null); top('#s-move'); }, at:[[10, () => see('#s-move .run')]]},
