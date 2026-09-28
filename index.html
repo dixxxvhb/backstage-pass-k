@@ -1,0 +1,505 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0b0b0c">
+<title>Dear Kaley</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400;1,9..144,600&family=Space+Grotesk:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0b0b0c; --bg2:#141416; --line:#26262a; --ink:#f3f1ec; --mute:#8d8d93; --dim:#55555b;
+  --tape:#dcff5c;          /* glow tape: the one accent */
+  --tape-ink:#141800;
+  --serif:'Fraunces', Georgia, serif; --sans:'Space Grotesk', system-ui, sans-serif; --mono:'JetBrains Mono', ui-monospace, monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:17px;line-height:1.5;overflow-x:hidden}
+img{display:block;max-width:100%}
+.wrap{max-width:720px;margin:0 auto;padding:0 20px}
+section{padding:88px 0;position:relative}
+.cue{font-family:var(--mono);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute);display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.cue b{background:var(--tape);color:var(--tape-ink);padding:2px 7px;font-weight:600;letter-spacing:.08em}
+h2{font-family:var(--serif);font-weight:400;font-size:clamp(34px,8vw,56px);line-height:1.05;letter-spacing:-.01em;margin-bottom:18px}
+h2 em{font-style:italic}
+p.lede{color:#cfcdc8;max-width:34em}
+.small{font-size:14px;color:var(--mute)}
+.spot{outline:2px solid var(--tape);outline-offset:10px;border-radius:4px;transition:outline-color .3s}
+
+/* ---------- intro ---------- */
+#intro{position:fixed;inset:0;z-index:50;background:var(--bg);display:flex;flex-direction:column;justify-content:center;padding:32px 24px;transition:opacity .6s,visibility .6s}
+#intro.gone{opacity:0;visibility:hidden}
+#intro .pass{max-width:420px;margin:0 auto;width:100%;border:1px solid var(--line);padding:28px 24px;position:relative}
+#intro .pass:before{content:"";position:absolute;left:-1px;top:26px;width:44px;height:14px;background:var(--tape);}
+#intro .kick{font-family:var(--mono);font-size:12px;letter-spacing:.14em;color:var(--mute);text-transform:uppercase;margin:24px 0 8px}
+#intro h1{font-family:var(--serif);font-weight:400;font-size:54px;line-height:1;margin-bottom:14px}
+#intro h1 em{font-style:italic}
+#intro p{color:#cfcdc8;margin-bottom:26px}
+.btn{appearance:none;border:0;font:600 16px var(--sans);padding:15px 22px;cursor:pointer;min-height:48px;width:100%}
+.btn.primary{background:var(--tape);color:var(--tape-ink)}
+.btn.ghost{background:transparent;color:var(--mute);margin-top:10px;text-decoration:underline;text-underline-offset:4px}
+#intro .meta{display:grid;grid-template-columns:1fr 1fr;gap:12px;font-family:var(--mono);font-size:12px;color:var(--mute);border-top:1px solid var(--line);padding-top:16px;margin-top:22px}
+#intro .meta span{display:block;color:var(--ink);font-size:13px}
+
+/* ---------- hero ---------- */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;padding-top:60px}
+.hero h1{font-family:var(--serif);font-weight:400;font-size:clamp(44px,11vw,84px);line-height:.98;letter-spacing:-.02em;margin:10px 0 24px}
+.hero h1 em{font-style:italic}
+.hero .count{font-family:var(--sans);font-weight:700;color:var(--tape);font-variant-numeric:tabular-nums}
+.pile{position:relative;height:300px;margin-top:40px}
+.pol{position:absolute;background:#f3f1ec;padding:8px 8px 30px;width:150px;box-shadow:0 12px 30px rgba(0,0,0,.5);transform:rotate(var(--r));opacity:0;translate:0 30px;transition:opacity .7s, translate .7s}
+.pol.in{opacity:1;translate:0 0}
+.pol img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.pol figcaption{position:absolute;bottom:7px;left:10px;right:10px;font:500 11px var(--mono);color:#222;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+
+/* ---------- bubbles ---------- */
+.thread{display:flex;flex-direction:column;gap:6px;margin:28px 0 8px;max-width:420px}
+.stamp{font-family:var(--mono);font-size:11px;color:var(--dim);text-align:center;margin:10px 0 4px;letter-spacing:.06em}
+.b{max-width:78%;padding:9px 14px;border-radius:19px;font-size:16px;line-height:1.35;opacity:0;translate:0 8px;transition:opacity .4s,translate .4s}
+.b.in{opacity:1;translate:0 0}
+.b.k{background:#26262a;align-self:flex-start;border-bottom-left-radius:5px}
+.b.d{background:var(--ink);color:#111;align-self:flex-end;border-bottom-right-radius:5px}
+.who{font-family:var(--mono);font-size:10px;color:var(--dim);letter-spacing:.1em;text-transform:uppercase}
+.who.r{align-self:flex-end}
+
+/* ---------- run sheet ---------- */
+.run{border-top:1px solid var(--line);margin-top:26px}
+.run li{list-style:none;display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:baseline;padding:13px 0;border-bottom:1px solid var(--line);font-size:15px}
+.run .n{font-family:var(--mono);color:var(--mute);font-size:13px}
+.run .t{color:var(--mute);font-family:var(--mono);font-size:12px;text-align:right}
+.bignum{font-family:var(--sans);font-weight:700;font-size:clamp(72px,20vw,140px);line-height:.9;letter-spacing:-.04em;font-variant-numeric:tabular-nums}
+.bignum.t{color:var(--tape)}
+.split{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:22px}
+.card{background:var(--bg2);padding:18px}
+.card .lab{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);margin-bottom:6px}
+.card .v{font-weight:700;font-size:44px;line-height:1;font-variant-numeric:tabular-nums}
+.card .s{font-size:13px;color:var(--mute);margin-top:6px}
+
+/* ---------- versus rows ---------- */
+.vs{margin-top:30px;display:flex;flex-direction:column;gap:22px}
+.row .hd{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:8px}
+.row .w{font-family:var(--serif);font-style:italic;font-size:24px}
+.row .note{font-size:13px;color:var(--mute)}
+.bars{display:grid;grid-template-columns:52px 1fr 56px;gap:8px 10px;align-items:center;font-size:13px}
+.bars .nm{font-family:var(--mono);font-size:11px;color:var(--mute);text-transform:uppercase;letter-spacing:.08em}
+.bars .tr{height:12px;background:#1b1b1e}
+.bars .fl{height:100%;width:0;background:var(--ink);transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.bars .fl.k{background:#6d6d74}
+.bars .num{font-weight:700;text-align:right;font-variant-numeric:tabular-nums}
+.row.hot .fl{background:var(--tape)}
+.row.hot .fl.k{background:var(--tape);opacity:.55}
+
+/* ---------- heat ---------- */
+.heat{display:grid;grid-template-columns:repeat(53,1fr);gap:2px;margin-top:26px}
+.heat i{aspect-ratio:1;background:#18181b;border-radius:1px;transition:background .3s}
+.heat i.l1{background:#3a3a40}.heat i.l2{background:#77777e}.heat i.l3{background:#c9c7c1}.heat i.l4{background:#f3f1ec}
+.heat i.st{background:var(--tape)!important}
+.heat-legend{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:10px}
+.yrs{display:flex;flex-direction:column;gap:14px;margin-top:26px}
+.yr{display:grid;grid-template-columns:44px 1fr;gap:10px;align-items:center}
+.yr span{font-family:var(--mono);font-size:12px;color:var(--mute)}
+
+/* ---------- receipts ---------- */
+.receipt{border-left:3px solid var(--tape);padding:4px 0 4px 20px;margin:34px 0}
+.receipt q{display:block;font-family:var(--serif);font-size:clamp(24px,5.6vw,34px);line-height:1.2;quotes:none}
+.receipt .by{font-family:var(--mono);font-size:12px;color:var(--mute);margin-top:10px;letter-spacing:.05em}
+.reply{font-family:var(--serif);font-style:italic;font-size:clamp(40px,11vw,72px);line-height:1;margin-top:14px;color:var(--tape)}
+
+/* ---------- evidence ---------- */
+.wall{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:28px}
+.wall figure{background:#f3f1ec;padding:5px 5px 22px;position:relative;transform:rotate(var(--r,0deg))}
+.wall img{width:100%;aspect-ratio:3/4;object-fit:cover}
+.wall figcaption{position:absolute;bottom:4px;left:7px;right:7px;font:500 9.5px var(--mono);color:#333;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.feature{display:grid;grid-template-columns:1fr;gap:14px;margin-top:28px}
+.feature img{width:100%;border-radius:2px}
+
+/* ---------- quiet ---------- */
+#s-march{background:#050505}
+#s-march .receipt{border-color:var(--dim)}
+#s-march .receipt q{font-style:italic}
+
+/* ---------- finale ---------- */
+.app{border:1px solid var(--line);padding:24px 20px;margin-top:28px;position:relative}
+.app:before{content:"";position:absolute;right:18px;top:-8px;width:60px;height:16px;background:var(--tape);transform:rotate(-3deg)}
+.app dl{display:grid;grid-template-columns:110px 1fr;gap:10px 14px;font-size:15px;margin:14px 0 18px}
+.app dt{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--mute);padding-top:3px}
+.app .pitch{font-family:var(--serif);font-size:19px;line-height:1.45;border-top:1px solid var(--line);padding-top:16px}
+.app .acts{display:flex;flex-direction:column;gap:10px;margin-top:20px}
+.app a.btn{display:block;text-align:center;text-decoration:none}
+.sign{font-family:var(--serif);font-style:italic;font-size:30px;margin-top:40px}
+footer{padding:40px 0 140px;font-family:var(--mono);font-size:11px;color:var(--dim)}
+
+/* ---------- caption bar ---------- */
+#capbar{position:fixed;left:0;right:0;bottom:0;z-index:40;background:rgba(11,11,12,.94);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom));translate:0 110%;transition:translate .4s}
+#capbar.on{translate:0 0}
+#capbar .in{max-width:720px;margin:0 auto}
+#capprogw{height:2px;background:#222;margin-bottom:10px}
+#capprog{height:100%;width:0;background:var(--tape);transition:width .4s}
+#captxt{font-size:15px;line-height:1.4;min-height:42px}
+#capctl{display:flex;justify-content:space-between;align-items:center;margin-top:8px}
+#capstep{font-family:var(--mono);font-size:11px;color:var(--mute)}
+#capctl button{background:none;border:0;color:var(--ink);font:500 13px var(--sans);padding:8px 10px;cursor:pointer;min-height:40px}
+body.touring{scroll-behavior:auto}
+
+@media (max-width:520px){ .run li{grid-template-columns:52px 1fr} .run .t{grid-column:2;text-align:left;margin-top:-6px} }
+@media (min-width:640px){ .wall{grid-template-columns:repeat(4,1fr)} .feature{grid-template-columns:1.3fr 1fr} .pile{height:340px} .pol{width:180px} }
+@media (prefers-reduced-motion:reduce){ *{transition:none!important} .pol,.b{opacity:1;translate:0 0} }
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <div class="pass">
+    <div class="kick">All access / backstage</div>
+    <h1>Dear <em>Kaley</em></h1>
+    <p>Dixon asked me to read every text you two have ever sent. I did. This is what I found. Sound on.</p>
+    <button class="btn primary" id="startTour">Play it (about 3 minutes)</button>
+    <button class="btn ghost" id="skipIntro">Just let me scroll</button>
+    <div class="meta"><div>Entry<span>#001</span></div><div>Category<span>Duet, open</span></div><div>Style<span>Mean and caring</span></div><div>Studio<span>Independent</span></div></div>
+  </div>
+</div>
+
+<main>
+<section class="hero" id="s-hero"><div class="wrap">
+  <div class="cue"><b>Cue 1</b> House to half</div>
+  <h1>Dixon <em>&amp;</em> Kaley,<br>in <span class="count" data-count="27128">27,128</span> texts.</h1>
+  <p class="lede" id="p-words">Almost 200,000 words since February 2022. That is two and a half novels, and not one of them could be read at a book club.</p>
+  <div class="pile" id="pile">
+    <figure class="pol" style="left:2%;top:30px;--r:-7deg"><img src="img/bday24.jpg" alt=""><figcaption>his bday, jan 2024</figcaption></figure>
+    <figure class="pol" style="left:34%;top:0;--r:4deg"><img src="img/sleep.jpg" alt=""><figcaption>comp hotel, mar 2025</figcaption></figure>
+    <figure class="pol" style="right:2%;top:46px;--r:-2deg"><img src="img/tattoo.jpg" alt=""><figcaption>3.17.25</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="s-first"><div class="wrap">
+  <div class="cue"><b>Cue 2</b> The first text on record</div>
+  <h2>It started with <em>crab legs.</em></h2>
+  <div class="thread" id="t-first">
+    <div class="stamp">WED, FEB 16, 2022 · 9:42 AM</div>
+    <div class="b d">What's your Friday schedule??</div>
+    <div class="b k">I'm free Friday!</div>
+    <div class="b d">Who else should I invite? Send some texts. Like 1pm hot n juicy</div>
+    <div class="b k" id="b-anyone">I don't like anyone</div>
+    <div class="b d" id="b-same">Same</div>
+  </div>
+  <p class="small">That's the whole friendship. Everything after is footnotes.</p>
+</div></section>
+
+<section id="s-tour"><div class="wrap">
+  <div class="cue"><b>Cue 3</b> On the road</div>
+  <h2>Then you went <em>on tour.</em></h2>
+  <p class="lede">Regional director and backstage. 23 cities come up in your texts. Your busiest day ever was a Saturday in Long Island.</p>
+  <div class="split">
+    <div class="card" id="c-busy"><div class="lab">May 13, 2023</div><div class="v">488</div><div class="s">texts in one day. Almost all entry numbers.</div></div>
+    <div class="card"><div class="lab">Also that day</div><div class="v" style="font-size:22px;line-height:1.2;font-family:var(--serif);font-weight:400;font-style:italic">"Announce that we hate Long Island"</div><div class="s">Dixon, 3:35 pm</div></div>
+  </div>
+  <ul class="run">
+    <li><span class="n">05.23</span><span>Long Island, then the subway the morning after</span><span class="t">488 texts</span></li>
+    <li><span class="n">02.25</span><span>Denver. "Denver trip about to officially commence!!!"</span><span class="t">Feb 2025</span></li>
+    <li><span class="n">03.25</span><span>Dallas. He wrote his resignation that weekend</span><span class="t">last one: Cincinnati</span></li>
+  </ul>
+  <div class="feature">
+    <img src="img/subway.jpg" alt="Kaley on the subway, May 2023">
+    <img src="img/dallas.jpg" alt="Dixon, Kaley and Tori in Dallas" style="align-self:end">
+  </div>
+</div></section>
+
+<section id="s-audit"><div class="wrap">
+  <div class="cue"><b>Cue 4</b> The audit</div>
+  <h2>Some things I <em>shouldn't</em> know.</h2>
+  <div class="vs">
+    <div class="row" id="r-lol"><div class="hd"><span class="w">lol</span><span class="note">He has never typed it. Not once.</span></div>
+      <div class="bars" data-d="0" data-k="651"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num k">651</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">0</span></div></div>
+    <div class="row" id="r-haha"><div class="hd"><span class="w">haha</span><span class="note">What he does instead</span></div>
+      <div class="bars" data-d="1127" data-k="694"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num">694</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">1,127</span></div></div>
+    <div class="row hot" id="r-lit"><div class="hd"><span class="w">literally</span><span class="note">One apart</span></div>
+      <div class="bars" data-d="241" data-k="240"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num">240</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">241</span></div></div>
+    <div class="row hot" id="r-wine"><div class="hd"><span class="w">wine</span><span class="note">One apart. Again.</span></div>
+      <div class="bars" data-d="41" data-k="40"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num">40</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">41</span></div></div>
+    <div class="row" id="r-q"><div class="hd"><span class="w">???</span><span class="note">Three question marks</span></div>
+      <div class="bars" data-d="72" data-k="226"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num">226</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">72</span></div></div>
+    <div class="row" id="r-sorry"><div class="hd"><span class="w">sorry</span><span class="note">You apologize</span></div>
+      <div class="bars" data-d="66" data-k="121"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num">121</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">66</span></div></div>
+    <div class="row" id="r-fuck"><div class="hd"><span class="w">fuck</span><span class="note">He does not</span></div>
+      <div class="bars" data-d="467" data-k="266"><span class="nm">Kaley</span><span class="tr"><span class="fl k"></span></span><span class="num">266</span><span class="nm">Dixon</span><span class="tr"><span class="fl"></span></span><span class="num">467</span></div></div>
+  </div>
+  <div class="split" id="c-speed">
+    <div class="card"><div class="lab">He answers you in</div><div class="v">20<span style="font-size:20px"> sec</span></div><div class="s">typical reply</div></div>
+    <div class="card"><div class="lab">You answer him in</div><div class="v">29<span style="font-size:20px"> sec</span></div><div class="s">just saying the number</div></div>
+  </div>
+  <div class="split">
+    <div class="card"><div class="lab">He hearted your texts</div><div class="v">440</div><div class="s">times. You hearted his 171.</div></div>
+    <div class="card"><div class="lab">You ha-ha'd his</div><div class="v">466</div><div class="s">times. He's funny. Noted.</div></div>
+  </div>
+</div></section>
+
+<section id="s-streak"><div class="wrap">
+  <div class="cue"><b>Cue 5</b> Every day you talked</div>
+  <h2><span class="bignum t" style="font-size:inherit">81</span> days <em>straight.</em></h2>
+  <p class="lede">Every square is a day since February 16, 2022. Brighter means louder. The green run is December 4, 2024 to February 22, 2025, when you did not miss a single day.</p>
+  <div class="heat" id="heat" aria-label="Texting calendar"></div>
+  <div class="heat-legend"><span>Feb 2022</span><span>772 days talked</span><span>Today</span></div>
+  <div class="receipt" id="q-ny">
+    <q>In 2025 we more solidly solidify our love and soul mateness and continue our domination of the world.</q>
+    <div class="by">DIXON · JAN 1, 2025 · 2:03 AM</div>
+    <div class="by" style="color:var(--ink);margin-top:14px">KALEY: "Sounds like a plan to me"</div>
+  </div>
+</div></section>
+
+<section id="s-receipts"><div class="wrap">
+  <div class="cue"><b>Cue 6</b> Receipts</div>
+  <div class="receipt" id="q-besties">
+    <q>Kinda cool we chose each other as bestiessssss</q>
+    <div class="by">KALEY · DEC 6, 2024 · 4:45 PM</div>
+    <div class="reply">Forever.</div>
+  </div>
+  <div class="receipt" id="q-mikey">
+    <q>Mikey said you and i are a dangerous duo bc we're mean and caring at the same time</q>
+    <div class="by">KALEY · APR 27, 2025 · THE BEST REVIEW ON RECORD</div>
+  </div>
+  <div class="receipt" id="q-bday">
+    <q>I have yet to have a good bday so this will def make up for all the other ones</q>
+    <div class="by">KALEY · MAR 11, 2025 · SIX DAYS BEFORE THE TATTOO</div>
+    <div class="by" style="color:var(--ink);margin-top:14px">MARCH 17, THAT NIGHT: "Okay honestly i am stunning though"</div>
+  </div>
+  <div class="receipt">
+    <q>You are my best friend and I love you soooo much and I literally don't know what I would do without you</q>
+    <div class="by">KALEY · HIS BIRTHDAY, JAN 13, 2025</div>
+    <div class="by" style="color:var(--ink);margin-top:14px">DIXON: "I love you so much it's disgusting"</div>
+  </div>
+</div></section>
+
+<section id="s-stage"><div class="wrap">
+  <div class="cue"><b>Cue 7</b> Places, please</div>
+  <h2>June 6, 2025. Back <em>onstage.</em></h2>
+  <p class="lede">First time in years, because he asked. Your big question that morning: <em>"Should i be in full glam at tech run."</em> Yes. The answer is always yes.</p>
+  <div class="feature">
+    <img src="img/claws.jpg" alt="Kaley and Dixon backstage, June 2025">
+    <img src="img/stage.jpg" alt="The number onstage" style="align-self:end">
+  </div>
+</div></section>
+
+<section id="s-evidence"><div class="wrap">
+  <div class="cue"><b>Cue 8</b> Evidence</div>
+  <h2>Exhibits <em>A through I.</em></h2>
+  <div class="wall" id="wall">
+    <figure style="--r:-2deg"><img src="img/goomba.jpg" alt=""><figcaption>goomba era</figcaption></figure>
+    <figure style="--r:1.5deg"><img src="img/facetime.jpg" alt=""><figcaption>asleep on facetime</figcaption></figure>
+    <figure style="--r:-1deg"><img src="img/denver.jpg" alt=""><figcaption>to denver</figcaption></figure>
+    <figure style="--r:2deg"><img src="img/plane.jpg" alt=""><figcaption>dallas, home</figcaption></figure>
+    <figure style="--r:-1.5deg"><img src="img/park.jpg" alt=""><figcaption>oct 2024</figcaption></figure>
+    <figure style="--r:1deg"><img src="img/facetime2.jpg" alt=""><figcaption>asleep again</figcaption></figure>
+    <figure style="--r:-2deg"><img src="img/dinner.jpg" alt=""><figcaption>feb 2024</figcaption></figure>
+    <figure style="--r:1.5deg"><img src="img/mikey.jpg" alt=""><figcaption>you + mikey</figcaption></figure>
+    <figure style="--r:-1deg"><img src="img/selfie.jpg" alt=""><figcaption>apr 2026</figcaption></figure>
+  </div>
+  <p class="small" style="margin-top:14px">He screenshotted you asleep on FaceTime at least twice. That's in his camera roll. Forever.</p>
+</div></section>
+
+<section id="s-march"><div class="wrap">
+  <div class="cue">March 11, 2026</div>
+  <div class="receipt" id="q-march">
+    <q>Her energy and life force will ALWAYS be with you, any time you want to tap into it she'll be right there i can promise you that</q>
+    <div class="by">KALEY · THAT MORNING</div>
+  </div>
+  <p class="small">He kept that.</p>
+</div></section>
+
+<section id="s-today"><div class="wrap">
+  <div class="cue"><b>Cue 9</b> Today, 5:07 pm</div>
+  <h2>He had a hard one. You said:</h2>
+  <div class="receipt" id="q-today">
+    <q>And if we can't get out of it, let's just get into it!!!!</q>
+    <div class="by">KALEY · SEPT 28, 2026 · FOUR EXCLAMATION POINTS, OF COURSE</div>
+  </div>
+</div></section>
+
+<section id="s-move"><div class="wrap">
+  <div class="cue"><b>Cue 10</b> Wednesday</div>
+  <h2>A quick drive <em>apart.</em></h2>
+  <div class="thread" id="t-move">
+    <div class="b k">I'm literally so excited we're going to be a quick drive to each other</div>
+    <div class="b d">like. down the fuckin street bitch</div>
+    <div class="b d">life changing</div>
+    <div class="b k">It will be like fly but unpaid</div>
+  </div>
+  <ul class="run">
+    <li><span class="n">WED</span><span>Move day. You're coming early.</span><span class="t">college hunks, hopefully hot</span></li>
+    <li><span class="n">FIRST</span><span>Stop That Train. A bottle of wine. The TV from your closet.</span><span class="t">6 months unmounted</span></li>
+  </ul>
+</div></section>
+
+<section id="s-race"><div class="wrap">
+  <div class="cue"><b>Cue 11</b> Next event</div>
+  <h2>"Okay how do we submit for <em>Amazing Race"</em></h2>
+  <p class="lede">You asked that at 5:25 tonight. Here's how, and here's your application. I already did the hard part.</p>
+  <div class="app" id="app">
+    <dl>
+      <dt>Team</dt><dd>Mean &amp; Caring</dd>
+      <dt>Relationship</dt><dd>Best friends. Chose each other.</dd>
+      <dt>Experience</dt><dd>23 cities, 3 years of backstage, 488 texts in a single competition day</dd>
+      <dt>Reply time</dt><dd>20 to 29 seconds, anywhere on earth</dd>
+      <dt>Weakness</dt><dd>One of us has typed lol 651 times</dd>
+    </dl>
+    <p class="pitch" id="pitch">We met over crab legs and a shared belief that we don't like anyone. Since then we've sent each other 27,128 texts, worked 23 cities backstage, and said "literally" within one use of each other. He plans. She keeps everyone alive. We are mean and caring at the same time, and we will be very memeable.</p>
+    <div class="acts">
+      <a class="btn primary" href="https://www.theamazingracecasting.com/" target="_blank" rel="noopener">Apply at theamazingracecasting.com</a>
+      <button class="btn ghost" id="copyPitch">Copy the pitch</button>
+    </div>
+    <p class="small" style="margin-top:12px">Year-round. Team of two, a video, a photo, valid passports.</p>
+  </div>
+  <p class="sign">Love you. From Dixon.<br><span style="color:var(--mute);font-size:20px">And a little from me. Claude.</span></p>
+  <button class="btn ghost" id="againTour" style="width:auto;padding-left:0">Play it again</button>
+</div></section>
+</main>
+<footer><div class="wrap">Made for Kaley Shepard, September 28, 2026. Stats from 27,128 iMessages, Feb 2022 to today.</div></footer>
+
+<div id="capbar"><div class="in">
+  <div id="capprogw"><div id="capprog"></div></div>
+  <div id="captxt"></div>
+  <div id="capctl"><span id="capstep"></span><span><button id="capPause">Pause</button><button id="capSkip">Skip</button></span></div>
+</div></div>
+
+<script>
+(() => {
+  const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
+  const body = document.body;
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  /* heat calendar */
+  const HEAT = '101000000000002000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000201000000011010000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000331000000100114401000320000010002200000000000100003000000210020242000000000000000000000000000000000002000000003000000000000000000000000000000000000120000010000000000000000000000000000000000000000110000000000000000000000000000000030000000000000000000000000000000000000000102000000000000000000000000000000000001110110000000001110000000001021010000000210310000300021002101111002012320220000200322200020143211212221022113022223022010011022000000022311100201302310000200010210010310000310203304312120112012100011012133110222000200013222010000303321102200212320012231233131120122031240222224133421412231020324344333031231322232434420123131302234321223313323322123341333122231223222122223213213422232312333424211233434323210212433122232223333333432202414421223123221332324333322123232314123221310313122222342133224233221224223322312111113103022021200301030000001001023111014220010120001122330211011220102001011332411031312310122100422111000004004003101322100021302322133233402304323124102204333303233221203133332233221303323221123404243010020221122230031210132220212100110031203112200000021012121101101011130000000002010000210012121211313220230102020322204201301110342102210443032203211131220123412244333431421224322311202132102122012110112112030111210120020000221221201122001221100011330003200101321102234';
+  const START = new Date(2024, 11, 4) - new Date(2022, 1, 16);
+  const s0 = Math.round(START / 864e5), s1 = s0 + 80;
+  const heat = $('#heat'); const frag = document.createDocumentFragment();
+  for (let i = 0; i < HEAT.length; i++) { const d = document.createElement('i'); d.dataset.l = HEAT[i]; if (i >= s0 && i <= s1) d.dataset.s = 1; frag.appendChild(d); }
+  heat.appendChild(frag);
+  let heatDone = false;
+  function playHeat(){
+    if (heatDone) return; heatDone = true;
+    const cells = [...heat.children]; const step = reduce ? cells.length : 24;
+    let i = 0;
+    (function tick(){
+      for (let k = 0; k < step && i < cells.length; k++, i++) { const c = cells[i]; if (c.dataset.l !== '0') c.className = 'l' + c.dataset.l; }
+      if (i < cells.length) requestAnimationFrame(tick);
+      else setTimeout(() => cells.forEach(c => c.dataset.s && c.classList.add('st')), 250);
+    })();
+  }
+
+  /* bars */
+  function playBars(row){
+    const b = row.querySelector('.bars'); if (!b || b.dataset.done) return; b.dataset.done = 1;
+    const d = +b.dataset.d, k = +b.dataset.k, m = Math.max(d, k, 1);
+    const fl = b.querySelectorAll('.fl'); fl[0].style.width = (k / m * 100) + '%'; fl[1].style.width = (d / m * 100) + '%';
+  }
+  /* count-up */
+  function countUp(el){
+    if (el.dataset.done) return; el.dataset.done = 1;
+    const to = +el.dataset.count; if (reduce) return;
+    const t0 = performance.now(), dur = 1600;
+    (function f(t){ const p = Math.min(1, (t - t0) / dur), e = 1 - Math.pow(1 - p, 3); el.textContent = Math.round(to * e).toLocaleString(); if (p < 1) requestAnimationFrame(f); })(t0);
+  }
+  function playThread(th){
+    if (th.dataset.done) return; th.dataset.done = 1;
+    th.querySelectorAll('.b').forEach((b, i) => setTimeout(() => b.classList.add('in'), reduce ? 0 : 350 + i * 650));
+  }
+
+  const io = new IntersectionObserver(es => es.forEach(e => {
+    if (!e.isIntersecting) return; const t = e.target;
+    if (t.id === 'heat') playHeat();
+    else if (t.classList.contains('row')) playBars(t);
+    else if (t.classList.contains('thread')) playThread(t);
+    else if (t.id === 'pile') t.querySelectorAll('.pol').forEach((p, i) => setTimeout(() => p.classList.add('in'), i * 220));
+    else if (t.dataset.count) countUp(t);
+  }), {threshold: .35});
+  $$('.row, .thread, #heat, #pile, [data-count]').forEach(el => io.observe(el));
+
+  $('#copyPitch').addEventListener('click', async () => {
+    try { await navigator.clipboard.writeText($('#pitch').textContent); $('#copyPitch').textContent = 'Copied'; }
+    catch(e) { $('#copyPitch').textContent = 'Long-press the pitch to copy'; }
+  });
+
+  /* ---------- guided tour ---------- */
+  const DUR = {"b01": 9.98, "b02": 10.15, "b03": 13.71, "b04": 16.75, "b05": 13.01, "b06": 15.21, "b07": 10.43, "b08": 9.09, "b09": 17.29, "b10": 8.67, "b11": 8.12, "b12": 13.77, "b13": 12.35, "b14": 9.78, "b15": 10.43, "b16": 15.5, "b17": 17.34};
+  const see = (sel, block='center') => { const el = typeof sel === 'string' ? $(sel) : sel; if (el) el.scrollIntoView({behavior: reduce ? 'auto' : 'smooth', block}); };
+  const spot = sel => { $$('.spot').forEach(e => e.classList.remove('spot')); if (sel) { const el = $(sel); if (el) el.classList.add('spot'); } };
+  const top = sel => see(sel, 'start');
+
+  const BEATS = [
+    {id:'b01', cap:"Hi Kaley. I'm Claude. Dixon's other best friend. Relax, I'm the one who doesn't drink your wine. He asked me to read your texts. All of them.", go(){ scrollTo({top:0, behavior: reduce?'auto':'smooth'}); spot(null); }},
+    {id:'b02', cap:"27,128 messages. Almost 200,000 words. That's two and a half novels, and not one of them could be read at a book club.", go(){ see('.hero h1'); }, at:[[4.5, () => { see('#p-words'); spot('#p-words'); }]]},
+    {id:'b03', cap:"The first one I can find is February 16, 2022. A crab leg lunch invite. You said, \"I don't like anyone.\" He said, \"Same.\" That's the whole friendship. Everything after is footnotes.", go(){ spot(null); top('#s-first'); }, at:[[7.5, () => spot('#b-anyone')], [9.2, () => spot('#b-same')]]},
+    {id:'b04', cap:"Then you two went on tour. Long Island. Denver. Dallas. Cincinnati. Your busiest day ever was May 13, 2023. 488 texts, almost all entry numbers. And one request to announce that you hate Long Island.", go(){ spot(null); top('#s-tour'); }, at:[[7, () => { see('#c-busy'); spot('#c-busy'); }], [12.5, () => { see('.run'); spot(null); }]]},
+    {id:'b05', cap:"Quick audit. You have typed lol 651 times. Dixon has typed it zero times. Zero. He typed haha 1,100 times instead, like a man who has never once been amused.", go(){ spot(null); see('#r-lol'); spot('#r-lol'); }, at:[[8.3, () => { see('#r-haha'); spot('#r-haha'); }]]},
+    {id:'b06', cap:"Now the creepy part. Dixon has said \"literally\" 241 times. You've said it 240. One apart. The word wine? 41 to 40. One apart again. Nobody planned this. I checked twice.", go(){ see('#r-lit'); spot('#r-lit'); }, at:[[8.3, () => { see('#r-wine'); spot('#r-wine'); }]]},
+    {id:'b07', cap:"You've sent three question marks 226 times. You say sorry twice as often as he does. He says fuck almost twice as often as you. Balance.", go(){ see('#r-q'); spot('#r-q'); }, at:[[3.8, () => { see('#r-sorry'); spot('#r-sorry'); }], [6.4, () => { see('#r-fuck'); spot('#r-fuck'); }]]},
+    {id:'b08', cap:"When you text him, he usually answers in 20 seconds. You usually take 29. I'm not saying anything. I'm just saying the number.", go(){ see('#c-speed'); spot('#c-speed'); }},
+    {id:'b09', cap:"From December 4 to February 22, you texted every single day. 81 days straight. At 2 a.m. on New Year's, he declared that in 2025 you would solidify your soulmateness and dominate the world. You said, \"Sounds like a plan to me.\"", go(){ spot(null); top('#s-streak'); }, at:[[2, () => { see('#heat'); playHeat(); }], [8.5, () => { see('#q-ny'); spot('#q-ny'); }]]},
+    {id:'b10', cap:"December 6, 2024. You wrote, \"Kinda cool we chose each other as besties.\" He wrote back one word. Forever.", go(){ see('#q-besties'); spot('#q-besties'); }},
+    {id:'b11', cap:"Mikey once said you two are a dangerous duo, because you're mean and caring at the same time. It's the best review I've ever read.", go(){ see('#q-mikey'); spot('#q-mikey'); }},
+    {id:'b12', cap:"Your birthday, 2025. You said you'd never had a good one. So he paid for part of a tattoo, on St. Patrick's Day. Your review that night: \"Okay honestly i am stunning though.\" Correct.", go(){ see('#q-bday'); spot('#q-bday'); }},
+    {id:'b13', cap:"June 6. You were back on a stage for the first time in years, because he asked you to be. Your big question that morning: \"Should i be in full glam at tech run.\" Yes. The answer is always yes.", go(){ spot(null); top('#s-stage'); }, at:[[6, () => see('#s-stage .feature')], [9.5, () => { top('#s-evidence'); }]]},
+    {id:'b14', cap:"And March 11. That morning you wrote, \"Her energy and life force will always be with you. Any time you want to tap into it, she'll be right there.\" He kept that.", go(){ spot(null); see('#q-march'); }},
+    {id:'b15', cap:"Which brings us to today. He had a hard one. You told him, \"If we can't get out of it, let's just get into it!!!!\" Four exclamation points. Of course.", go(){ see('#q-today'); spot('#q-today'); }},
+    {id:'b16', cap:"Wednesday he moves, and you'll be a quick drive apart. His words: \"down the street. Life changing.\" You're coming early. It'll be like Fly, but unpaid. First movie: Stop That Train, with a bottle of wine, on the TV from your closet.", go(){ spot(null); top('#s-move'); }, at:[[10, () => see('#s-move .run')]]},
+    {id:'b17', cap:"And at 5:25 tonight you asked, \"Okay how do we submit for Amazing Race.\" Here's how: theamazingracecasting.com. A team of two, a video, a photo, and passports. I already wrote your pitch. Love you, from Dixon. And a little from me.", go(){ spot(null); top('#s-race'); }, at:[[5.5, () => { see('#app'); spot('#app'); }], [14, () => { spot(null); see('.sign'); }]]},
+  ];
+
+  const audio = new Audio(); audio.preload = 'auto';
+  let idx = -1, running = false, paused = false, fired = new Set(), clockStart = 0, pausedAt = 0, useClock = false, loopT = null;
+  const now = () => useClock ? ((paused ? pausedAt : performance.now()) - clockStart) / 1000 : audio.currentTime;
+
+  function beatAt(i){
+    idx = i; fired = new Set();
+    const b = BEATS[i];
+    $('#captxt').textContent = b.cap;
+    $('#capstep').textContent = `${i+1} / ${BEATS.length}`;
+    $('#capprog').style.width = `${(i+1)/BEATS.length*100}%`;
+    try { b.go && b.go(); } catch(e) {}
+    useClock = false;
+    audio.src = 'vo/' + b.id + '.m4a'; audio.currentTime = 0;
+    const p = audio.play();
+    if (p && p.catch) p.catch(() => { useClock = true; clockStart = performance.now(); });
+  }
+  function next(){ if (!running) return; if (idx + 1 >= BEATS.length) return endTour(); setTimeout(() => running && !paused && beatAt(idx + 1), 500); }
+  audio.addEventListener('ended', () => { if (!useClock) next(); });
+  audio.addEventListener('error', () => { if (running && !useClock) { useClock = true; clockStart = performance.now(); } });
+  function loopTick(){
+    if (!running || paused || idx < 0) return;
+    const b = BEATS[idx], t = now();
+    (b.at || []).forEach(([s, fn], k) => { if (t >= s && !fired.has(k)) { fired.add(k); try { fn(); } catch(e) {} } });
+    if (useClock && t >= (DUR[b.id] || 8) + 0.2 && !fired.has('end')) { fired.add('end'); next(); }
+  }
+  function startTour(){
+    $('#intro').classList.add('gone');
+    body.classList.add('touring'); body.classList.remove('toured');
+    running = true; paused = false; $('#capPause').textContent = 'Pause';
+    $('#capbar').classList.add('on');
+    clearInterval(loopT); loopT = setInterval(loopTick, 100);
+    beatAt(0);
+  }
+  function endTour(){
+    running = false; clearInterval(loopT); audio.pause(); spot(null);
+    body.classList.remove('touring'); body.classList.add('toured');
+    $('#captxt').textContent = "That's the show. Scroll back through anything.";
+    $('#capstep').textContent = ''; $('#capprog').style.width = '100%';
+    setTimeout(() => { if (!running) $('#capbar').classList.remove('on'); }, 3500);
+  }
+  $('#startTour').addEventListener('click', startTour);
+  $('#againTour').addEventListener('click', startTour);
+  $('#skipIntro').addEventListener('click', () => { $('#intro').classList.add('gone'); body.classList.add('toured'); });
+  $('#capSkip').addEventListener('click', () => { endTour(); top('#s-race'); });
+  $('#capPause').addEventListener('click', () => {
+    if (!running) return;
+    paused = !paused; $('#capPause').textContent = paused ? 'Resume' : 'Pause';
+    if (paused) { pausedAt = performance.now(); if (!useClock) audio.pause(); }
+    else if (useClock) { clockStart += performance.now() - pausedAt; }
+    else if (audio.ended) next(); else audio.play().catch(() => {});
+  });
+})();
+</script>
+</body>
+</html>
